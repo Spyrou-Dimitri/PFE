@@ -1,182 +1,58 @@
-# Plateforme de Gestion et Coordination d'Équipe E-Sport
+<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
 
-## 1. Contexte de l'application
+<p align="center">
+<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
+<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
+</p>
 
-Cette plateforme est une application web conçue pour les équipes e-sport compétitives. Le but est de centraliser tous les outils de gestion d'équipe, améliorer la communication interne et professionnaliser l'organisation des structures e-sport de niveau amateur à semi-professionnel.
+## About Laravel
 
-L'application répond à une problématique concrète : actuellement, les équipes utilisent des outils disparates et non adaptés (Discord pour la communication, Google Sheets pour les plannings, Trello pour les tâches, etc.). Cette fragmentation entraîne une perte d'information, des difficultés de coordination et un manque de visibilité sur l'organisation globale.
+Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-Le projet propose une solution unique et centralisée, spécifiquement pensée pour les besoins des structures e-sport compétitives, en offrant :
+- [Simple, fast routing engine](https://laravel.com/docs/routing).
+- [Powerful dependency injection container](https://laravel.com/docs/container).
+- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
+- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
+- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
+- [Robust background job processing](https://laravel.com/docs/queues).
+- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
 
-- Une gestion complète du roster avec attribution de rôles
-- Un système de disponibilités pour faciliter la planification
-- Un calendrier centralisé pour les scrims, matchs officiels et jours de repos
-- Une checklist pré-match pour assurer la préparation
-- Un système de devoirs assignés par le coach
-- Un suivi des objectifs individuels et collectifs
-- Une communication interne en temps réel
-- Un historique des résultats et performances
+Laravel is accessible, powerful, and provides tools required for large, robust applications.
 
----
+## Learning Laravel
 
-## 2. Gestion des accès (rôles et permissions)
+Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
 
-### Rôles
+In addition, [Laracasts](https://laracasts.com) contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
 
-- **Coach** : gestion complète de l'équipe (roster, événements, devoirs, objectifs, validation des tâches, accès au dashboard complet)
-- **Joueur** : accès opérationnel et consultation (disponibilités, devoirs assignés, objectifs personnels, chat, calendrier personnel, résultats), avec des droits limités
-- **Staff** (optionnel) : accès partiel selon les besoins (consultation du calendrier, accès au chat, suivi des résultats)
+You can also watch bite-sized lessons with real-world projects on [Laravel Learn](https://laravel.com/learn), where you will be guided through building a Laravel application from scratch while learning PHP fundamentals.
 
-### Principe
+## Agentic Development
 
-Le rôle détermine :
+Laravel's predictable structure and conventions make it ideal for AI coding agents like Claude Code, Cursor, and GitHub Copilot. Install [Laravel Boost](https://laravel.com/docs/ai) to supercharge your AI workflow:
 
-- Ce qui est visible (dashboards, sections, menus)
-- Ce qui est modifiable (événements, devoirs, objectifs)
-- Ce qui est validable (actions sensibles comme la validation des devoirs, suppression d'événements)
+```bash
+composer require laravel/boost --dev
 
-**Exemples :**
+php artisan boost:install
+```
 
-- Un Joueur peut marquer un devoir comme complété, mais seul le Coach peut le valider définitivement
-- Le Coach voit le dashboard complet avec statistiques d'équipe et vue globale des disponibilités ; le Joueur voit une version simplifiée centrée sur ses tâches personnelles
-- Seul le Coach peut créer, modifier ou supprimer des événements du calendrier et attribuer des devoirs
+Boost provides your agent 15+ tools and skills that help agents build Laravel applications while following best practices.
 
----
+## Contributing
 
-## 3. Personas et parcours utilisateurs
+Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-### 🎮 Thomas — Coach d'une équipe semi-professionnelle
-→ Rôle : Coach
+## Code of Conduct
 
-#### 🧩 Parcours utilisateur 1 — Planifier un scrim d'entraînement
+In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
 
-Thomas souhaite organiser un scrim contre une équipe adverse pour préparer un tournoi. Il se connecte à la plateforme, ouvre la rubrique "Calendrier", puis crée un nouvel événement de type "Scrim". Il sélectionne la date, l'heure, ajoute l'équipe adverse et des notes tactiques. Le système vérifie automatiquement les disponibilités des joueurs et signale si certains ne sont pas disponibles. Thomas enregistre l'événement et tous les joueurs reçoivent une notification.
+## Security Vulnerabilities
 
-#### 🧩 Parcours utilisateur 2 — Attribuer des devoirs après un match
+If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
 
-Après avoir analysé un match perdu, Thomas identifie des points d'amélioration. Il ouvre la section "Devoirs", crée une nouvelle tâche de type "Visionnage de replay" pour son ADC, définit une date limite et ajoute des commentaires sur les erreurs à corriger. Le joueur reçoit une notification instantanée et peut consulter le devoir depuis son dashboard personnel. Lorsque le joueur marque le devoir comme terminé, Thomas reçoit une notification et peut le valider après vérification.
+## License
 
-#### 🧩 Parcours utilisateur 3 — Suivre les objectifs de l'équipe
-
-En début de mois, Thomas consulte le dashboard coach. Il voit la progression des objectifs collectifs (ex. "Atteindre 70% de winrate en scrim") et individuels de chaque joueur. Il identifie que certains objectifs ne progressent pas et décide d'organiser une réunion d'équipe pour ajuster la stratégie. Il peut directement créer un événement "Réunion" depuis cette vue.
-
----
-
-### 🎮 Lucas — Joueur ADC
-→ Rôle : Joueur
-
-#### 🧩 Parcours utilisateur 1 — Indiquer sa disponibilité pour la semaine
-
-Lucas se connecte le dimanche soir pour mettre à jour ses disponibilités. Il ouvre la section "Disponibilités", sélectionne les jours où il ne sera pas disponible (mercredi pour un examen), et confirme. Le coach reçoit une notification du changement et peut adapter le planning des entraînements en conséquence.
-
-#### 🧩 Parcours utilisateur 2 — Compléter un devoir assigné
-
-Lucas voit une notification indiquant qu'il a un nouveau devoir. Il ouvre son dashboard, consulte le devoir "Visionnage de replay" avec les commentaires du coach. Après avoir visionné le replay et noté ses erreurs, il marque le devoir comme complété et ajoute un commentaire sur ce qu'il a appris. Le coach reçoit une notification et peut valider le devoir.
-
-#### 🧩 Parcours utilisateur 3 — Vérifier le planning avant un match
-
-Le jour d'un match officiel, Lucas ouvre la section "Calendrier" depuis son téléphone. Il consulte l'horaire exact, vérifie la checklist pré-match (setup vérifié, échauffement fait, stratégie revue) et coche les items au fur et à mesure. Il voit également que tous ses coéquipiers sont disponibles et que la checklist est presque complète.
-
----
-
-## 4. Fonctionnalités (MVP)
-
-### 4.1 Authentification et gestion des profils
-
-- Inscription et connexion sécurisée
-- Gestion du profil utilisateur
-- Attribution des rôles (Coach, Joueur, Staff)
-- Système de permissions basé sur les rôles
-
-### 4.2 Gestion du roster
-
-- Création et modification des profils de joueurs
-- Attribution et modification des rôles
-- Affichage de la composition de l'équipe
-- Gestion des remplaçants
-- Suppression de membres (réservée au Coach)
-
-### 4.3 Système de disponibilités
-
-- Interface de saisie des disponibilités par joueur (jour/semaine/mois)
-- Vue d'ensemble des disponibilités de toute l'équipe (Coach uniquement)
-- Notifications automatiques en cas de changement de disponibilité
-- Filtres par période et par joueur
-
-### 4.4 Calendrier centralisé
-
-- Création, modification et suppression d'événements (réservé au Coach)
-- Types d'événements : Scrims, Matchs officiels, Jours de repos, Réunions
-- Code couleur par type d'événement
-- Vues multiples : journalière, hebdomadaire, mensuelle
-- Synchronisation avec les disponibilités (alerte si joueur indisponible)
-- Notifications automatiques pour les événements à venir
-
-### 4.5 Checklist pré-match
-
-- Création de templates de checklist par le Coach
-- Items personnalisables (setup, échauffement, stratégie, etc.)
-- Validation des items par les joueurs
-- Suivi de la progression en temps réel
-- Historique des checklists complétées par match
-
-### 4.6 Section résultats
-
-- Enregistrement des résultats de matchs (victoire/défaite)
-- Statistiques basiques : nombre de victoires, défaites, ratio
-- Historique complet des performances
-- Filtres par période, type de match (scrim/officiel), adversaire
-- Graphiques de progression (optionnel pour le MVP)
-
-### 4.7 Système de devoirs
-
-- Création et attribution de devoirs par le Coach
-- Types de devoirs : Visionnage de replay, Entraînement spécifique, Théorie, Autre
-- Date limite et niveau de priorité
-- Attribution à un ou plusieurs joueurs
-- Marquage comme "complété" par le joueur
-- Validation et ajout de commentaires par le Coach
-- Notifications à chaque étape du processus
-
-### 4.8 Suivi des objectifs
-
-- Définition d'objectifs individuels et collectifs par le Coach
-- Suivi de la progression (pourcentage ou étapes)
-- Dates d'échéance
-- Statuts : En cours, Complété, Échoué, Reporté
-- Historique des objectifs atteints
-
-### 4.9 Communication interne (potentiellement)
-
-- Chat en temps réel entre membres de l'équipe
-- Création de canaux de discussion (général, stratégie, off-topic)
-- Notifications instantanées de nouveaux messages
-- Historique complet des conversations
-
-### 4.10 Dashboards personnalisés
-
-**Dashboard Coach :**
-
-- Vue d'ensemble de l'équipe (disponibilités, prochains événements)
-- Statistiques de performance récentes
-- Liste des devoirs en attente de validation
-- Progression des objectifs collectifs et individuels
-- Alertes (joueurs indisponibles, devoirs non complétés)
-- Actions rapides (créer événement, attribuer devoir, définir objectif)
-
-**Dashboard Joueur :**
-
-- Vue personnelle (mes prochains événements, mes disponibilités)
-- Liste de mes devoirs (à faire, en attente de validation, validés)
-- Mes objectifs personnels et progression
-- Statistiques personnelles récentes
-- Notifications non lues
-- Accès rapide au chat et au calendrier
-
----
-
-## 5. Technologies utilisées
-
-**Back-End** : Laravel 12  
-**Front-End** : Laravel 12 + Tailwind CSS + JavaScript  
-**Design** : Figma  
+The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
